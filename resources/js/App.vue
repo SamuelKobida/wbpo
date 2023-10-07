@@ -1,34 +1,74 @@
 <template>
-    <div class="event-container">
-        <h1>Vue Conf Bratislava</h1>
-        <h2>20.12.2023, Crown Plaza</h2>
-        <p>Hlavný speaker: Samuel Kobida</p>
-        <p>Téma:"State of Vue 2023"</p>
 
-        <div class="event-list">
-            <p>Program:</p>
-            <ul>
-                <li>10:00 - Príchod hostí</li>
-                <li>11:00 - Prípitok</li>
-                <li>11:30 - Keynote</li>
-                <li>12:30 - Obed</li>
-                <li>14:00 - Networking</li>
-            </ul>
+    <div class="container-box">
+        <div class="my-container">
+            <h1>React Conf Bratislava</h1>
+            <h2>24.1.2023, Crown Plaza</h2>
+            <p>Hlavný speaker: Jordan Walke</p>
+            <p>Téma:"State of React 2023"</p>
+
+            <div class="my-container-list">
+                <p>Program:</p>
+                <ul>
+                    <li>10:00 - Príchod hostí</li>
+                    <li>11:00 - Prípitok</li>
+                    <li>11:30 - Keynote</li>
+                    <li>12:30 - Obed</li>
+                    <li>14:00 - Networking</li>
+                </ul>
+            </div>
+            <button type="button" class="btn" @click="showModal">Mám záujem!</button>
         </div>
-        <button type="button" class="btn" @click="showModal">Mám záujem!</button>
+
+        <div class="my-container">
+            <h1>Vue Conf Bratislava</h1>
+            <h2>20.12.2023, Sheraton</h2>
+            <p>Hlavný speaker: Evan You</p>
+            <p>Téma:"State of Vue 2023"</p>
+
+            <div class="my-container-list">
+                <p>Program:</p>
+                <ul>
+                    <li>10:00 - Príchod hostí</li>
+                    <li>11:00 - Prípitok</li>
+                    <li>11:30 - Keynote</li>
+                    <li>12:30 - Obed</li>
+                    <li>14:00 - Networking</li>
+                </ul>
+            </div>
+            <button type="button" class="btn" @click="showModal">Mám záujem!</button>
+        </div>
+
+        <div class="my-container">
+            <h1>AngularJS Conf Bratislava</h1>
+            <h2>6.6.2024, River Park</h2>
+            <p>Hlavný speaker: Miško Hevery</p>
+            <p>Téma:"State of AngularJS 2023"</p>
+
+            <div class="my-container-list">
+                <p>Program:</p>
+                <ul>
+                    <li>10:00 - Príchod hostí</li>
+                    <li>11:00 - Prípitok</li>
+                    <li>11:30 - Keynote</li>
+                    <li>12:30 - Obed</li>
+                    <li>14:00 - Networking</li>
+                </ul>
+            </div>
+            <button type="button" class="btn" @click="showModal">Mám záujem!</button>
+        </div>
     </div>
 
-    <Modal
-        v-if="isModalVisible"
-        @close="closeModal">
 
-        <template v-slot:header>
-        </template>
-
+    <transition name="fade" appear>
+        <div class="modal-overlay" v-if="isModalVisible" @click="closeModal"></div>
+    </transition>
+    <transition name="fade" appear>
+    <Modal v-if="isModalVisible" @close="closeModal">
         <template v-slot:body>
         </template>
-
     </Modal>
+    </transition>
 
 </template>
 
@@ -56,28 +96,35 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
-.event-container {
-    width: 400px; /* Adjust the width to your desired size */
-    margin: 0 auto; /* Center the container horizontally */
+.container-box {
+    display: flex;
+    justify-content: center;
+}
+
+.my-container {
+    flex: 0 0 calc(33.33% - 100px);
+    margin: 15px 15px;
     text-align: center;
-    background-color: #f0f0f0; /* Background color for the container */
-    border-radius: 10px; /* Rounded corners for the container */
-    padding: 20px; /* Add some padding to the container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 1); /* Add a shadow to the container */
+    background-color: #e1b955;
+
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     border: 1px solid #ccc;
 }
 
-.event-list {
-    text-align: left; /* Align the list items to the left */
+.my-container-list {
+    text-align: left;
 }
 
 button {
+margin: 10px;
 padding: 10px 20px;
 font-size: 16px;
-background-color: #007bff; /* Blue button color */
-color: #fff; /* White text color */
+background-color: #D84C02;
+color: #fff;
 border: none;
 border-radius: 5px;
 cursor: pointer;
@@ -85,6 +132,55 @@ transition: background-color 0.3s;
 }
 
 button:hover {
-background-color: #0056b3; /* Darker blue on hover */
+background-color: #f95803;
 }
+
+input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    width: 100%;
+    max-width: 400px;
+    background-color: #e1b955;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    border: 1px solid #ccc;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 98;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-leave-to {
+    opacity: 0;
+}
+
+html, body {
+    background-color: #c7c9d1;
+
+}
+
 </style>

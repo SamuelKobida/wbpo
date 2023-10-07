@@ -8,27 +8,9 @@ use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
-    public function storeGuest(Request $request): JsonResponse
+    public function storeGuest(Request $request)
     {
-        try
-        {
-            $order = Guest::create($request->all());
-            $order->save();
-
-            $success = true;
-            $message = 'Tešíme sa na Vás!';
-        }
-        catch (\Exception $defEx)
-        {
-            $success = false;
-            $message = $defEx->getMessage();
-        }
-
-        $response = [
-            'success' => $success,
-            'message' => $message,
-        ];
-
-        return response()->json($response);
+            Guest::create($request->all());
     }
 }
+
