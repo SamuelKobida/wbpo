@@ -15,5 +15,6 @@ class Guest extends Model
         'name',
         'email',
         'phone_number',
+        'event_id'
     ];
 }

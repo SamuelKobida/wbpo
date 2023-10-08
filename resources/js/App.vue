@@ -1,102 +1,53 @@
 <template>
-
-    <div class="container-box">
-        <div class="my-container">
-            <h1>React Conf Bratislava</h1>
-            <h2>24.1.2023, Crown Plaza</h2>
-            <p>Hlavný speaker: Jordan Walke</p>
-            <p>Téma:"State of React 2023"</p>
-
-            <div class="my-container-list">
-                <p>Program:</p>
-                <ul>
-                    <li>10:00 - Príchod hostí</li>
-                    <li>11:00 - Prípitok</li>
-                    <li>11:30 - Keynote</li>
-                    <li>12:30 - Obed</li>
-                    <li>14:00 - Networking</li>
-                </ul>
+    <nav class="navbar">
+            <div class="navbar-content">
+            <div class="navbar-brand">
+                <p>WBPO</p>
             </div>
-            <button type="button" class="btn" @click="showModal">Mám záujem!</button>
-        </div>
-
-        <div class="my-container">
-            <h1>Vue Conf Bratislava</h1>
-            <h2>20.12.2023, Sheraton</h2>
-            <p>Hlavný speaker: Evan You</p>
-            <p>Téma:"State of Vue 2023"</p>
-
-            <div class="my-container-list">
-                <p>Program:</p>
-                <ul>
-                    <li>10:00 - Príchod hostí</li>
-                    <li>11:00 - Prípitok</li>
-                    <li>11:30 - Keynote</li>
-                    <li>12:30 - Obed</li>
-                    <li>14:00 - Networking</li>
-                </ul>
+            <div class="navbar-list">
+                <router-link to="/events" class="navbar-item">Events</router-link>
+                <router-link to="/guests" class="navbar-item">Guests</router-link>
             </div>
-            <button type="button" class="btn" @click="showModal">Mám záujem!</button>
         </div>
-
-        <div class="my-container">
-            <h1>AngularJS Conf Bratislava</h1>
-            <h2>6.6.2024, River Park</h2>
-            <p>Hlavný speaker: Miško Hevery</p>
-            <p>Téma:"State of AngularJS 2023"</p>
-
-            <div class="my-container-list">
-                <p>Program:</p>
-                <ul>
-                    <li>10:00 - Príchod hostí</li>
-                    <li>11:00 - Prípitok</li>
-                    <li>11:30 - Keynote</li>
-                    <li>12:30 - Obed</li>
-                    <li>14:00 - Networking</li>
-                </ul>
-            </div>
-            <button type="button" class="btn" @click="showModal">Mám záujem!</button>
-        </div>
+    </nav>
+    <div>
+        <router-view></router-view>
     </div>
-
-
-    <transition name="fade" appear>
-        <div class="modal-overlay" v-if="isModalVisible" @click="closeModal"></div>
-    </transition>
-    <transition name="fade" appear>
-    <Modal v-if="isModalVisible" @close="closeModal">
-        <template v-slot:body>
-        </template>
-    </Modal>
-    </transition>
-
 </template>
 
 <script>
-import Modal from "./compoments/Modal.vue";
-
 export default {
     name: "App",
-    components: {
-        Modal,
-    },
-    data() {
-        return {
-            isModalVisible: false,
-        };
-    },
-    methods: {
-        showModal() {
-            this.isModalVisible = true;
-        },
-        closeModal() {
-            this.isModalVisible = false;
-        },
-    },
-};
+}
 </script>
 
 <style>
+.navbar {
+    background-color: #333;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.navbar-brand {
+    color:#D84C02;
+    font-size:30px;
+}
+
+.navbar-item {
+    color: white;
+    text-decoration: none;
+    margin: 1rem;
+}
+
+.navbar-item:hover {
+    color:#D84C02;
+}
 
 .container-box {
     display: flex;
@@ -120,19 +71,19 @@ export default {
 }
 
 button {
-margin: 10px;
-padding: 10px 20px;
-font-size: 16px;
-background-color: #D84C02;
-color: #fff;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #D84C02;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-background-color: #f95803;
+    background-color: #f95803;
 }
 
 input {
@@ -167,20 +118,38 @@ input {
     right: 0;
     bottom: 0;
     z-index: 98;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.fade-leave-active {
-    transition: opacity .5s;
-}
-
-.fade-leave-to {
-    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 html, body {
     background-color: #c7c9d1;
+    margin: 0;
+    padding: 0;
 
 }
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+}
+
+.guest-list{
+    height: 65vh;
+    margin: 50px 50px;
+    text-align: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    border: 1px solid #ccc;
+}
+
+.v-enter-from { opacity: 0 }
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+.v-leave-to { opacity: 0 }
 
 </style>

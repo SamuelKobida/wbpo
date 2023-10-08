@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('phone_number')->unique();
+            $table->string('email');
+            $table->integer('phone_number');
+            $table->integer('event_id');
             $table->timestamps();
         });
     }
