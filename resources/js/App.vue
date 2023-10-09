@@ -13,6 +13,11 @@
     <div>
         <router-view></router-view>
     </div>
+
+<!--    <h1 class="tw-underline">
+        Testing tailwind
+        </h1>   -->
+
 </template>
 
 <script>
@@ -142,6 +147,11 @@ html, body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     border: 1px solid #ccc;
+}
+
+.guest-list ul {
+    list-style-type: none;
+
 }
 
 .v-enter-from { opacity: 0 }

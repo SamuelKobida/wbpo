@@ -43,4 +43,20 @@ class GuestController extends Controller
 
         return response()->json($message);
     }
+
+    public function loadGuests(): JsonResponse
+    {
+        $guests = Guest::all();
+
+        if ($guests)
+        {
+            return response()->json($guests);
+        }
+        else
+        {
+            $message = 'List je prázdny.';
+            return response()->json($message);
+        }
+    }
+
 }

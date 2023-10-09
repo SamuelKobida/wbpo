@@ -98,7 +98,7 @@ export default {
 
             if (isValid) {
                 axios
-                    .post("http://localhost/wbpo/public/api/save", this.formData)
+                    .post("http://localhost/wbpo/public/api/store", this.formData)
                     .then((response) => {
                         this.responseMessage = response.data;
                         console.log(this.responseMessage);
